@@ -1,8 +1,11 @@
 public class Basket {
 
     private static int count = 0;
+    private static int totalPriceBaskets = 0;
+    private static int totalItemsBaskets = 0;
     private String items = "";
     private int totalPrice = 0;
+    private int totalItems = 0;
     private int limit;
 
     public Basket() {
@@ -27,8 +30,25 @@ public class Basket {
         return count;
     }
 
+    public static int getTotalPrice() {
+        return totalPriceBaskets;
+    }
+    public static int getTotalItems () {return totalItemsBaskets; }
+
+    public static int getAverageItemsPrice() {return totalPriceBaskets/totalItemsBaskets;}
+
+    public static int getAverageBasketsPrice() {return totalPriceBaskets/count;}
+
     public static void increaseCount(int count) {
         Basket.count = Basket.count + count;
+    }
+
+    public static void increaseTotalPriceBaskets(int totalPriceBaskets) {
+        Basket.totalPriceBaskets = Basket.totalPriceBaskets + totalPriceBaskets;
+    }
+
+    public static void increaseTotalItemsBaskets(int totalItemsBaskets) {
+        Basket.totalItemsBaskets = Basket.totalItemsBaskets + totalItemsBaskets;
     }
 
     public void add(String name, int price) {
@@ -53,15 +73,15 @@ public class Basket {
         items = items + "\n" + name + " - " +
             count + " шт. - " + price;
         totalPrice = totalPrice + count * price;
+        totalItems = totalItems + count;
+        increaseTotalPriceBaskets(count*price);
+        increaseTotalItemsBaskets(count);
     }
 
     public void clear() {
         items = "";
         totalPrice = 0;
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
+        totalItems = 0;
     }
 
     public boolean contains(String name) {
