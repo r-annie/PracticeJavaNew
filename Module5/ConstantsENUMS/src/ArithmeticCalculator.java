@@ -1,23 +1,37 @@
 public class ArithmeticCalculator {
 
-    private static int numberOne;
-    private static int numberTwo;
+    private double numberOne;
+    private double numberTwo;
+    private static ArithmeticCalculator initialization = null;
 
-    ArithmeticCalculator(int numberOne, int numberTwo) {
-        ArithmeticCalculator.numberOne = numberOne;
-        ArithmeticCalculator.numberTwo = numberTwo;
+    private ArithmeticCalculator() {
     }
 
-    public static int calculate(Operation operation) {
-        if (operation == Operation.ADD) {
-            return ArithmeticCalculator.numberOne + ArithmeticCalculator.numberTwo;
+    public static ArithmeticCalculator init() {
+        if (initialization == null) {
+            initialization = new ArithmeticCalculator();
         }
-        if (operation == Operation.MULTIPLY) {
-            return ArithmeticCalculator.numberOne * ArithmeticCalculator.numberTwo;
+        return initialization;
+    }
+
+    public void setNumberOne(double numberOne) {
+        initialization.numberOne = numberOne;
+    }
+
+    public void setNumberTwo(double numberTwo) {
+        initialization.numberTwo = numberTwo;
+    }
+
+    public double calculate(Operation operation) {
+        if (operation.equals(Operation.ADD)) {
+            return initialization.numberOne + initialization.numberTwo;
         }
-        if (operation == Operation.SUBSTRACT) {
-            return ArithmeticCalculator.numberOne - ArithmeticCalculator.numberTwo;
+        if (operation.equals(Operation.MULTIPLY)) {
+            return initialization.numberOne * initialization.numberTwo;
         }
-        return 0;
+        if (operation.equals(Operation.SUBSTRACT)) {
+            return initialization.numberOne - initialization.numberTwo;
+        }
+        return 00;
     }
 }
