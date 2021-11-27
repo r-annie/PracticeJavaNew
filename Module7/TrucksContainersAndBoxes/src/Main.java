@@ -10,7 +10,7 @@ public class Main {
         int contInCargo = 12;
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите количество ящиков: ");
+        System.out.print("Введите количество ящиков: " + System.lineSeparator());
         boxes = scanner.nextInt();
 
         if (boxes > 0) {
@@ -18,17 +18,20 @@ public class Main {
 
                 if (i % (contInCargo*boxInCont) == 0) {
                     cargo++;
-                    System.out.println("Грузовик: " + cargo);
+                    System.out.print("Грузовик: " + cargo + System.lineSeparator());
                 }
                 if (i % boxInCont == 0) {
                     container++;
-                    System.out.println("\t" + "Контейнер: " + container);
+                    System.out.print("\t" + "Контейнер: " + container + System.lineSeparator());
                 }
 
-                System.out.println("\t" + "\t" + "Ящик: " + (i+1));
+                System.out.print("\t" + "\t" + "Ящик: " + (i+1) + System.lineSeparator());
             }
+            System.out.print("Необходимо:" + System.lineSeparator());
+            System.out.print("Грузовиков: " + cargo + " шт." + System.lineSeparator());
+            System.out.print("Контейнеров: " + container + " шт." + System.lineSeparator());
         } else {
-            System.out.println("Задано неверное количество ящиков!");
+            System.out.print("Задано неверное количество ящиков!" + System.lineSeparator());
         }
     }
 }
