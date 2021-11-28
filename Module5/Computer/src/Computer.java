@@ -11,11 +11,6 @@ public class Computer {
     public Computer (String vendor, String name) {
         this.vendor = vendor;
         this.name = name;
-        this.cpu = null;
-        this.ram = null;
-        this.rom = null;
-        this.screen = null;
-        this.keyboard = null;
     }
 
     public Computer (String vendor, String name, CPU cpu, RAM ram, ROM rom, Screen screen, Keyboard keyboard) {
