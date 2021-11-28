@@ -21,27 +21,30 @@ public class GeometryCalculator {
     }
 
     public double rectangleSquare () { //проверка условия построения должна быть
-            pRect = (aRect + bRect + cRect) / 2.0;
-            this.rectangleSquare = Math.sqrt(pRect * (pRect - aRect) * (pRect - bRect) * (pRect - cRect));
-            return this.rectangleSquare;
+            if (checkOpportunity) {
+                pRect = (aRect + bRect + cRect) / 2.0;
+                rectangleSquare = Math.sqrt(pRect * (pRect - aRect) * (pRect - bRect) * (pRect - cRect));
+            } else {
+                rectangleSquare = 0;
+            }
+            return rectangleSquare;
     }
 
     public double roundSquare () {
-        this.roundSquare = Math.PI*Math.pow(rSq,2);
-        return this.roundSquare;
+        roundSquare = Math.PI*Math.pow(rSq,2);
+        return roundSquare;
     }
 
     public double roundVol () {
-        this.roundVol = (4.0/3.0)*Math.PI*Math.pow(rSq,3);
-        return this.roundVol;
+        roundVol = (4.0/3.0)*Math.PI*Math.pow(rSq,3);
+        return roundVol;
     }
 
     public boolean checkOpportunity () {
         if (((aRect+bRect)>cRect)&&((aRect+cRect)>bRect)&&((bRect+cRect)>aRect)){
-            this.checkOpportunity  = true;
-            return this.checkOpportunity;
+            checkOpportunity  = true;
         }
-        return this.checkOpportunity;
+        return checkOpportunity;
     }
 
 }
