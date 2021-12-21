@@ -5,8 +5,17 @@ public class Main {
   }
 
   public static String splitTextIntoWords(String text) {
-    //TODO реализуйте метод
-    return "";
-  }
+    String regex = "[^A-zА-ё`'’]+";
+    text = text.replaceAll(regex," ");
 
-}
+    String[] words = text.split("\\s");
+    String result = "";
+
+    if (words.length >= 100) {
+      for (String word : words) {
+        result = result + word + "\n";
+      }
+      }
+    return result.trim();
+    }
+  }
